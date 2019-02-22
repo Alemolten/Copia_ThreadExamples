@@ -114,7 +114,7 @@ public class AM_CercaVocali {
      * @return vocale letta
      * @throws TimeoutException se non viene inserito niente entro 3 secondi
      */
-    private static char leggiVocale() throws TimeoutException {
+    private synchronized static char leggiVocale() throws TimeoutException {
         char ris = ' ';
         boolean error = false;
         try {
@@ -147,7 +147,7 @@ public class AM_CercaVocali {
 
     }
 
-    private static char LeggiSiNo() {
+    private synchronized static char LeggiSiNo() {
         char letto = ' ';
         boolean continua = true;
         do {

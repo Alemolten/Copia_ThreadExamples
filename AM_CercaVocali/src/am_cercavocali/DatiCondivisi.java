@@ -31,7 +31,7 @@ public class DatiCondivisi {
         this.schermo = new Schermo();
     }
 
-    public void resetDatiCondivisi() {
+    public synchronized void resetDatiCondivisi() {
         for (int i = 0; i < thTerminato.length; i++) {
             thTerminato[i] = false;
         }
@@ -39,7 +39,7 @@ public class DatiCondivisi {
         this.schermo.reset();
     }
 
-    public void scriviSuSchermo(String str) {
+    public synchronized void scriviSuSchermo(String str) {
         schermo.add(str);
     }
     
@@ -48,7 +48,7 @@ public class DatiCondivisi {
      *
      * @return true se tutti i thread sono terminati
      */
-    public boolean sonoFinitiTutti() {
+    public synchronized boolean sonoFinitiTutti() {
         boolean ris = true;
         for (int i = 0; i < 5; i++) {
             if (!thTerminato[i]) {
@@ -64,23 +64,23 @@ public class DatiCondivisi {
      * imposta come terminato il thread corrispondente alla vocale data
      * @param vocale di cui impostare il thread come terminato
      */
-    public void setFinito(char vocale) {
+    public synchronized void setFinito(char vocale) {
         thTerminato[vocali.getIndex(vocale)] = true;
     }
 
-    public String getStringSchermo() {
+    public synchronized String getStringSchermo() {
         return schermo.toString();
     }
     
-    public char getVocaleMax() {
+    public synchronized char getVocaleMax() {
         return vocali.getMax();
     }
 
-    public void incNum(char vocale) {
+    public synchronized void incNum(char vocale) {
         vocali.incNum(vocale);
     }
     
-    public char getVocale(int index) {
+    public synchronized char getVocale(int index) {
         return vocali.getVocale(index);
     }
 }

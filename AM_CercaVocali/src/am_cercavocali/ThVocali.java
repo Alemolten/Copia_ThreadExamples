@@ -64,7 +64,7 @@ public class ThVocali extends Thread {
      * la stampa utilizzanzo la classe {@link Schermo}
      */
     @Override
-    public void run() {
+    public synchronized void run() {
         try {
             for (int i = 0; i < frase.length(); i++) {
                 if (frase.charAt(i) == vocale) {

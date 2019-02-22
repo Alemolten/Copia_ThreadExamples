@@ -14,7 +14,7 @@ public class ThVisualizza extends Thread {
     }
 
     @Override
-    public void run() {
+    public synchronized void run() {
         int numCar = 0;
         while (!ptrDati.sonoFinitiTutti()) {
             String s = ptrDati.getStringSchermo();
